@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>BOSS FILES — Gateway to Another Dimension</title>
+<title>BOSS FILES — Beyond The Ordinary</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-<link href="https://cdn.jsdelivr.net/fontsource/fonts/orbitron@latest/latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
 <style>
   @font-face {
     font-family: 'Orbitron';
@@ -19,90 +18,110 @@
     font-weight: 400;
     font-display: swap;
   }
+  @font-face {
+    font-family: 'Rajdhani';
+    src: url('https://cdn.jsdelivr.net/fontsource/fonts/rajdhani@latest/latin-400-normal.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Rajdhani';
+    src: url('https://cdn.jsdelivr.net/fontsource/fonts/rajdhani@latest/latin-500-normal.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+  }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-0: #03040A;
+    --bg-1: #080D1B;
+    --cosmic-blue: #14264F;
+    --electric-blue: #426BFF;
+    --electric-cyan: #55DFFF;
+    --cosmic-violet: #8558FF;
+    --silver: #D7DCE8;
+    --gold: #C7A76C;
+  }
 
   html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #000;
-    color: #e8eefc;
-    font-family: 'Orbitron', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg-0);
+    color: var(--silver);
+    font-family: 'Rajdhani', 'Segoe UI', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    user-select: none;
   }
 
+  /* ===== COSMOS CANVAS ===== */
   #cosmos {
     position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: radial-gradient(ellipse at 50% 50%, #05071a 0%, #020208 60%, #000 100%);
   }
 
-  /* Nebula layers */
+  /* ===== NEBULA LAYERS ===== */
   .nebula {
     position: fixed;
     inset: 0;
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 2.2s ease-out;
+    transition: opacity 2.5s ease-out;
     mix-blend-mode: screen;
   }
   .nebula.visible { opacity: 1; }
-  .nebula::before, .nebula::after {
+  .nebula::before, .nebula::after, .nebula .n3 {
     content: '';
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(90px);
   }
   .nebula::before {
-    width: 60vmax;
-    height: 60vmax;
-    left: -10vmax;
-    top: -15vmax;
-    background: radial-gradient(circle, rgba(80, 50, 180, 0.35) 0%, rgba(30, 20, 100, 0.15) 40%, transparent 70%);
-    animation: drift1 40s ease-in-out infinite alternate;
+    width: 65vmax; height: 65vmax;
+    left: -15vmax; top: -20vmax;
+    background: radial-gradient(circle, rgba(85, 60, 200, 0.35) 0%, rgba(30, 20, 100, 0.12) 45%, transparent 75%);
+    animation: drift1 45s ease-in-out infinite alternate;
   }
   .nebula::after {
-    width: 55vmax;
-    height: 55vmax;
-    right: -15vmax;
-    bottom: -20vmax;
-    background: radial-gradient(circle, rgba(30, 90, 200, 0.3) 0%, rgba(10, 40, 120, 0.12) 45%, transparent 75%);
-    animation: drift2 50s ease-in-out infinite alternate;
+    width: 55vmax; height: 55vmax;
+    right: -18vmax; bottom: -22vmax;
+    background: radial-gradient(circle, rgba(30, 90, 200, 0.32) 0%, rgba(10, 40, 120, 0.1) 50%, transparent 78%);
+    animation: drift2 55s ease-in-out infinite alternate;
   }
-  .nebula-2::before {
-    background: radial-gradient(circle, rgba(140, 60, 200, 0.22) 0%, transparent 65%);
-    width: 45vmax;
-    height: 45vmax;
-    left: 30vmax;
-    top: 25vmax;
-    animation: drift3 55s ease-in-out infinite alternate;
+  .nebula .n3 {
+    width: 45vmax; height: 45vmax;
+    left: 30vmax; top: 25vmax;
+    background: radial-gradient(circle, rgba(140, 60, 200, 0.18) 0%, transparent 65%);
+    animation: drift3 60s ease-in-out infinite alternate;
   }
-
-  @keyframes drift1 {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(5vw, 3vh) scale(1.1); }
-  }
-  @keyframes drift2 {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(-4vw, -5vh) scale(1.15); }
-  }
-  @keyframes drift3 {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(-6vw, 4vh) scale(0.95); }
+  .nebula .n4 {
+    position: absolute;
+    width: 35vmax; height: 35vmax;
+    right: 10vmax; top: 10vmax;
+    border-radius: 50%;
+    filter: blur(100px);
+    background: radial-gradient(circle, rgba(85, 223, 255, 0.08) 0%, transparent 70%);
+    animation: drift4 50s ease-in-out infinite alternate;
   }
 
-  /* Logo */
+  @keyframes drift1 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(6vw, 4vh) scale(1.12); } }
+  @keyframes drift2 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-5vw, -6vh) scale(1.15); } }
+  @keyframes drift3 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-7vw, 5vh) scale(0.95); } }
+  @keyframes drift4 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(4vw, -3vh) scale(1.08); } }
+
+  /* ===== LOGO ===== */
   #logoWrap {
     position: fixed;
     inset: 0;
     z-index: 5;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     pointer-events: none;
@@ -110,66 +129,57 @@
   #logo {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
-    font-size: clamp(2.2rem, 9vw, 7.5rem);
-    letter-spacing: 0.18em;
+    font-size: clamp(2.4rem, 9.5vw, 8rem);
+    letter-spacing: 0.16em;
     color: transparent;
-    background: linear-gradient(180deg, #f5f7ff 0%, #b8c2d8 40%, #7a88a8 70%, #4a5570 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #e8ecf5 25%, #b8c2d8 55%, #7a88a8 80%, #4a5570 100%);
     -webkit-background-clip: text;
     background-clip: text;
     position: relative;
     opacity: 0;
-    transform: scale(0.96);
-    transition: opacity 1.2s ease-out, transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
-    text-shadow:
-      0 0 20px rgba(120, 170, 255, 0.35),
-      0 0 40px rgba(80, 120, 220, 0.2);
-    filter: drop-shadow(0 0 1px rgba(180, 210, 255, 0.6));
+    transform: scale(0.94) translateY(6px);
+    transition: opacity 1.4s ease-out, transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: drop-shadow(0 0 1px rgba(180, 210, 255, 0.6)) drop-shadow(0 0 25px rgba(85, 223, 255, 0.25));
+    text-align: center;
+    line-height: 1;
   }
-  #logo.visible {
-    opacity: 1;
-    transform: scale(1);
-  }
+  #logo .boss { color: transparent; background: linear-gradient(180deg, #ffffff 0%, #d7dce8 40%, #8a95b0 75%, #5a6580 100%); -webkit-background-clip: text; background-clip: text; }
+  #logo .files { color: transparent; background: linear-gradient(180deg, #f0f3fa 0%, #c7a76c 50%, #8a7040 100%); -webkit-background-clip: text; background-clip: text; font-size: 0.72em; letter-spacing: 0.3em; display: block; margin-top: 0.2em; }
+  #logo.visible { opacity: 1; transform: scale(1) translateY(0); }
   #logo::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(110deg,
-      transparent 0%,
-      transparent 35%,
-      rgba(255, 255, 255, 0.55) 50%,
-      transparent 65%,
-      transparent 100%);
+    background: linear-gradient(110deg, transparent 0%, transparent 38%, rgba(255, 255, 255, 0.7) 50%, transparent 62%, transparent 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    background-size: 200% 100%;
-    background-position: 200% 0;
-    animation: sweep 2.2s ease-in-out forwards;
+    background-size: 250% 100%;
+    background-position: 250% 0;
+    animation: sweep 2.4s ease-in-out forwards;
     animation-play-state: paused;
   }
   #logo.sweep::after { animation-play-state: running; }
   @keyframes sweep {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+    0% { background-position: 250% 0; }
+    100% { background-position: -250% 0; }
   }
 
   #tagline {
-    position: absolute;
-    bottom: 28%;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 1.2rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
     font-size: clamp(0.65rem, 1.3vw, 0.95rem);
     letter-spacing: 0.55em;
-    color: rgba(170, 195, 235, 0.7);
+    color: rgba(170, 200, 235, 0.75);
     opacity: 0;
-    transition: opacity 1.5s ease-out 0.5s;
+    transition: opacity 1.5s ease-out 0.6s;
     text-transform: uppercase;
-    font-weight: 400;
     white-space: nowrap;
   }
   #tagline.visible { opacity: 1; }
 
-  /* Portal */
+  /* ===== PORTAL ===== */
   #portal {
     position: fixed;
     top: 50%;
@@ -179,48 +189,62 @@
     height: 0;
     z-index: 4;
     opacity: 0;
-    transition: opacity 0.6s ease-out;
+    transition: opacity 0.8s ease-out;
     pointer-events: none;
   }
-  #portal.active {
-    opacity: 1;
-  }
+  #portal.active { opacity: 1; }
   .ring {
     position: absolute;
     top: 50%;
     left: 50%;
     border-radius: 50%;
-    border: 1px solid rgba(120, 170, 255, 0.5);
     transform: translate(-50%, -50%);
-    box-shadow:
-      0 0 30px rgba(100, 150, 255, 0.3),
-      inset 0 0 30px rgba(100, 150, 255, 0.15);
   }
   .ring-1 {
-    width: 100%;
-    height: 100%;
-    animation: spin 8s linear infinite;
-    border-color: rgba(140, 180, 255, 0.4);
+    width: 100%; height: 100%;
+    border: 1px solid rgba(85, 223, 255, 0.35);
+    box-shadow: 0 0 40px rgba(85, 223, 255, 0.25), inset 0 0 40px rgba(85, 223, 255, 0.1);
+    animation: spin 10s linear infinite;
+  }
+  .ring-1::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 1px dashed rgba(85, 223, 255, 0.3);
   }
   .ring-2 {
-    width: 78%;
-    height: 78%;
-    animation: spin 6s linear infinite reverse;
-    border-color: rgba(170, 140, 255, 0.5);
-    border-style: dashed;
+    width: 80%; height: 80%;
+    border: 1px solid rgba(133, 88, 255, 0.45);
+    box-shadow: 0 0 30px rgba(133, 88, 255, 0.25), inset 0 0 30px rgba(133, 88, 255, 0.1);
+    animation: spin 7s linear infinite reverse;
+  }
+  .ring-2::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(133, 88, 255, 0.4) 30deg, transparent 60deg, transparent 180deg, rgba(85, 223, 255, 0.3) 210deg, transparent 240deg);
+    -webkit-mask: radial-gradient(circle, transparent 45%, black 47%, black 53%, transparent 55%);
+    mask: radial-gradient(circle, transparent 45%, black 47%, black 53%, transparent 55%);
   }
   .ring-3 {
-    width: 56%;
-    height: 56%;
-    animation: spin 4s linear infinite;
-    border-color: rgba(120, 200, 255, 0.6);
+    width: 60%; height: 60%;
+    border: 1.5px solid rgba(85, 223, 255, 0.55);
+    box-shadow: 0 0 35px rgba(85, 223, 255, 0.35), inset 0 0 35px rgba(85, 223, 255, 0.15);
+    animation: spin 5s linear infinite;
   }
   .ring-4 {
-    width: 34%;
-    height: 34%;
-    animation: spin 2.5s linear infinite reverse;
-    border-color: rgba(200, 180, 255, 0.7);
-    border-width: 2px;
+    width: 40%; height: 40%;
+    border: 2px solid rgba(199, 167, 108, 0.5);
+    box-shadow: 0 0 25px rgba(199, 167, 108, 0.3), inset 0 0 25px rgba(199, 167, 108, 0.15);
+    animation: spin 3.5s linear infinite reverse;
+  }
+  .ring-5 {
+    width: 22%; height: 22%;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), inset 0 0 30px rgba(85, 223, 255, 0.4);
+    animation: spin 2s linear infinite;
   }
   @keyframes spin {
     0% { transform: translate(-50%, -50%) rotate(0deg); }
@@ -231,59 +255,457 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 18%;
-    height: 18%;
+    width: 14%;
+    height: 14%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     background: radial-gradient(circle,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(180, 210, 255, 0.8) 20%,
-      rgba(100, 140, 255, 0.5) 45%,
-      rgba(60, 80, 200, 0.2) 70%,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(200, 230, 255, 0.9) 15%,
+      rgba(85, 223, 255, 0.7) 35%,
+      rgba(66, 107, 255, 0.4) 55%,
+      rgba(133, 88, 255, 0.2) 75%,
       transparent 100%);
     box-shadow:
-      0 0 60px rgba(150, 190, 255, 0.8),
-      0 0 120px rgba(100, 140, 255, 0.5),
-      0 0 200px rgba(80, 100, 220, 0.3);
-    animation: corePulse 2s ease-in-out infinite;
+      0 0 60px rgba(85, 223, 255, 0.9),
+      0 0 120px rgba(85, 223, 255, 0.5),
+      0 0 200px rgba(66, 107, 255, 0.3);
+    animation: corePulse 1.8s ease-in-out infinite;
   }
   @keyframes corePulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
-    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.92; }
+    50% { transform: translate(-50%, -50%) scale(1.18); opacity: 1; }
   }
 
-  /* Hyperspace overlay */
-  #hyperspace {
+  /* ===== DENTAL HOLOGRAMS ===== */
+  #holograms {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+  }
+  #holograms.visible { opacity: 1; }
+  .holo {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1.2s ease-out;
+    filter: drop-shadow(0 0 8px rgba(85, 223, 255, 0.5));
+  }
+  .holo.visible { opacity: 0.85; }
+  .holo svg { width: 100%; height: 100%; }
+
+  .holo-molar {
+    width: clamp(90px, 14vw, 180px);
+    height: clamp(110px, 17vw, 220px);
+    left: 12%;
+    top: 28%;
+    animation: float1 8s ease-in-out infinite;
+  }
+  .holo-arch {
+    width: clamp(110px, 16vw, 200px);
+    height: clamp(80px, 12vw, 150px);
+    right: 10%;
+    top: 22%;
+    animation: float2 9s ease-in-out infinite;
+  }
+  .holo-cross {
+    width: clamp(80px, 12vw, 150px);
+    height: clamp(100px, 15vw, 190px);
+    left: 18%;
+    bottom: 22%;
+    animation: float3 10s ease-in-out infinite;
+  }
+  .holo-instrument {
+    width: clamp(60px, 9vw, 110px);
+    height: clamp(120px, 18vw, 230px);
+    right: 15%;
+    bottom: 20%;
+    animation: float4 11s ease-in-out infinite;
+  }
+
+  @keyframes float1 {
+    0%, 100% { transform: translate(0, 0) rotate(-3deg); }
+    50% { transform: translate(8px, -12px) rotate(3deg); }
+  }
+  @keyframes float2 {
+    0%, 100% { transform: translate(0, 0) rotate(2deg); }
+    50% { transform: translate(-10px, 8px) rotate(-2deg); }
+  }
+  @keyframes float3 {
+    0%, 100% { transform: translate(0, 0) rotate(4deg); }
+    50% { transform: translate(6px, -10px) rotate(-3deg); }
+  }
+  @keyframes float4 {
+    0%, 100% { transform: translate(0, 0) rotate(-5deg); }
+    50% { transform: translate(-8px, 12px) rotate(4deg); }
+  }
+
+  /* ===== FLOATING LECTURE PAGES ===== */
+  #pages {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    perspective: 1200px;
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+  }
+  #pages.visible { opacity: 1; }
+  .page {
+    position: absolute;
+    width: clamp(90px, 14vw, 160px);
+    height: clamp(120px, 18vw, 210px);
+    background: linear-gradient(135deg, rgba(235, 240, 250, 0.08) 0%, rgba(200, 215, 240, 0.04) 100%);
+    border: 1px solid rgba(215, 220, 232, 0.25);
+    border-radius: 2px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow:
+      0 0 20px rgba(85, 223, 255, 0.15),
+      inset 0 0 30px rgba(85, 223, 255, 0.05);
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    transform-style: preserve-3d;
+  }
+  .page.visible { opacity: 0.85; }
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(85, 223, 255, 0.5), transparent);
+  }
+  .page-lines {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .page-line {
+    height: 1.5px;
+    background: linear-gradient(90deg, rgba(215, 220, 232, 0.4) 0%, rgba(215, 220, 232, 0.15) 100%);
+    border-radius: 1px;
+  }
+  .page-line.short { width: 60%; }
+  .page-line.mid { width: 80%; }
+  .page-line.long { width: 95%; }
+  .page-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 6px;
+    letter-spacing: 0.15em;
+    color: rgba(85, 223, 255, 0.7);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .page-diagram {
+    margin-top: 8px;
+    width: 100%;
+    height: 35%;
+    border: 1px solid rgba(85, 223, 255, 0.2);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-diagram::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 30% 40%, rgba(85, 223, 255, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 70% 60%, rgba(133, 88, 255, 0.1) 0%, transparent 40%);
+  }
+
+  .page-1 { left: 8%; top: 18%; animation: pageFloat1 12s ease-in-out infinite; }
+  .page-2 { right: 7%; top: 15%; animation: pageFloat2 14s ease-in-out infinite; }
+  .page-3 { left: 22%; bottom: 15%; animation: pageFloat3 13s ease-in-out infinite; }
+  .page-4 { right: 20%; bottom: 18%; animation: pageFloat4 15s ease-in-out infinite; }
+  .page-5 { left: 38%; top: 10%; animation: pageFloat5 11s ease-in-out infinite; }
+
+  @keyframes pageFloat1 {
+    0%, 100% { transform: translate3d(0,0,0) rotateY(-12deg) rotateX(4deg); }
+    50% { transform: translate3d(10px, -15px, 20px) rotateY(-8deg) rotateX(6deg); }
+  }
+  @keyframes pageFloat2 {
+    0%, 100% { transform: translate3d(0,0,0) rotateY(14deg) rotateX(-3deg); }
+    50% { transform: translate3d(-12px, 10px, 15px) rotateY(10deg) rotateX(-5deg); }
+  }
+  @keyframes pageFloat3 {
+    0%, 100% { transform: translate3d(0,0,0) rotateY(-8deg) rotateX(-5deg); }
+    50% { transform: translate3d(8px, -12px, 25px) rotateY(-4deg) rotateX(-3deg); }
+  }
+  @keyframes pageFloat4 {
+    0%, 100% { transform: translate3d(0,0,0) rotateY(10deg) rotateX(5deg); }
+    50% { transform: translate3d(-10px, 8px, 18px) rotateY(6deg) rotateX(3deg); }
+  }
+  @keyframes pageFloat5 {
+    0%, 100% { transform: translate3d(0,0,0) rotateY(0deg) rotateX(8deg); }
+    50% { transform: translate3d(0, -10px, 30px) rotateY(4deg) rotateX(6deg); }
+  }
+
+  /* ===== SPACECRAFT HUD ===== */
+  #hud {
     position: fixed;
     inset: 0;
     z-index: 6;
     pointer-events: none;
     opacity: 0;
-    background: radial-gradient(circle at 50% 50%,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(200, 220, 255, 0) 30%,
-      rgba(100, 140, 255, 0) 60%,
-      rgba(0, 0, 0, 0) 100%);
+    transition: opacity 1.2s ease-out;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: rgba(85, 223, 255, 0.6);
+    text-transform: uppercase;
+  }
+  #hud.visible { opacity: 1; }
+  .hud-corner {
+    position: absolute;
+    padding: 14px 18px;
+  }
+  .hud-tl { top: 0; left: 0; }
+  .hud-tr { top: 0; right: 0; text-align: right; }
+  .hud-bl { bottom: 0; left: 0; }
+  .hud-br { bottom: 0; right: 0; text-align: right; }
+  .hud-line { margin-bottom: 3px; opacity: 0.8; }
+  .hud-line .val { color: rgba(215, 220, 232, 0.85); }
+  .hud-line .dim { color: rgba(85, 223, 255, 0.4); }
+  .hud-bracket {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgba(85, 223, 255, 0.4);
+  }
+  .hud-bracket.tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+  .hud-bracket.tr { top: 20px; right: 20px; border-left: none; border-bottom: none; }
+  .hud-bracket.bl { bottom: 20px; left: 20px; border-right: none; border-top: none; }
+  .hud-bracket.br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+  .hud-reticle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    opacity: 0.3;
+  }
+  .hud-reticle::before, .hud-reticle::after {
+    content: '';
+    position: absolute;
+    background: rgba(85, 223, 255, 0.5);
+  }
+  .hud-reticle::before {
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    transform: translateY(-50%);
+  }
+  .hud-reticle::after {
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    transform: translateX(-50%);
+  }
+  .hud-reticle-circle {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(85, 223, 255, 0.3);
+    border-radius: 50%;
+  }
+
+  /* ===== STATUS MESSAGES ===== */
+  #status {
+    position: fixed;
+    bottom: 14%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 7;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    font-size: clamp(0.7rem, 1.4vw, 0.95rem);
+    letter-spacing: 0.4em;
+    color: rgba(215, 220, 232, 0.85);
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    pointer-events: none;
+    white-space: nowrap;
+    text-shadow: 0 0 20px rgba(85, 223, 255, 0.4);
+  }
+  #status.visible { opacity: 1; }
+  #status::before {
+    content: '▸ ';
+    color: var(--electric-cyan);
+  }
+
+  /* ===== HYPERSPACE OVERLAY ===== */
+  #hyperspace {
+    position: fixed;
+    inset: 0;
+    z-index: 8;
+    pointer-events: none;
+    opacity: 0;
     transition: opacity 0.3s ease-out;
   }
   #hyperspace.active { opacity: 1; }
 
-  /* Flash */
+  /* ===== FLASH ===== */
   #flash {
     position: fixed;
     inset: 0;
-    z-index: 10;
-    background: #fff;
+    z-index: 15;
+    background: radial-gradient(circle at 50% 50%, #ffffff 0%, #c7e8ff 40%, #55dfff 100%);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease-out;
   }
 
-  /* Fallback screen */
+  /* ===== AUDIO CONTROLS ===== */
+  #audioPrompt {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    display: none;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 22px;
+    background: rgba(8, 13, 27, 0.7);
+    border: 1px solid rgba(85, 223, 255, 0.3);
+    border-radius: 40px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.6s ease-out, border-color 0.3s ease-out, transform 0.3s ease-out;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    color: rgba(215, 220, 232, 0.9);
+    text-transform: uppercase;
+    box-shadow: 0 0 30px rgba(85, 223, 255, 0.15);
+  }
+  #audioPrompt.visible { display: flex; opacity: 1; }
+  #audioPrompt:hover {
+    border-color: rgba(85, 223, 255, 0.7);
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 0 40px rgba(85, 223, 255, 0.3);
+  }
+  .audio-icon {
+    width: 16px;
+    height: 16px;
+    position: relative;
+  }
+  .audio-icon::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 4px;
+    height: 8px;
+    background: var(--electric-cyan);
+    box-shadow: 0 0 8px var(--electric-cyan);
+  }
+  .audio-icon::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 8px solid var(--electric-cyan);
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    filter: drop-shadow(0 0 4px var(--electric-cyan));
+  }
+  .audio-prompt-text { white-space: nowrap; }
+
+  #muteBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 50;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(8, 13, 27, 0.5);
+    border: 1px solid rgba(85, 223, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+  }
+  #muteBtn.visible { display: flex; opacity: 1; }
+  #muteBtn:hover {
+    border-color: rgba(85, 223, 255, 0.7);
+    background: rgba(8, 13, 27, 0.7);
+  }
+  .mute-icon {
+    width: 14px;
+    height: 14px;
+    position: relative;
+  }
+  .mute-icon .speaker {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 3px;
+    height: 6px;
+    background: var(--electric-cyan);
+  }
+  .mute-icon .cone {
+    position: absolute;
+    left: 3px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 6px solid var(--electric-cyan);
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+  }
+  .mute-icon .wave {
+    position: absolute;
+    right: 0;
+    top: 3px;
+    width: 4px;
+    height: 8px;
+    border-right: 1.5px solid var(--electric-cyan);
+    border-top: 1.5px solid transparent;
+    border-bottom: 1.5px solid transparent;
+    border-radius: 0 8px 8px 0;
+  }
+  #muteBtn.muted .wave { display: none; }
+  #muteBtn.muted .mute-icon::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 6px;
+    width: 10px;
+    height: 1.5px;
+    background: var(--electric-cyan);
+    transform: rotate(-45deg);
+    transform-origin: right center;
+  }
+
+  /* ===== FALLBACK SCREEN ===== */
   #fallback {
     position: fixed;
     inset: 0;
-    z-index: 20;
+    z-index: 30;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -292,19 +714,17 @@
     background: radial-gradient(ellipse at 50% 40%, #0a0f2a 0%, #030510 60%, #000 100%);
     text-align: center;
     opacity: 0;
-    transition: opacity 0.8s ease-out;
+    transition: opacity 1s ease-out;
   }
-  #fallback.visible {
-    display: flex;
-    opacity: 1;
-  }
+  #fallback.visible { display: flex; opacity: 1; }
   #fallback::before {
     content: '';
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 20% 30%, rgba(80, 50, 180, 0.25) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(30, 90, 200, 0.2) 0%, transparent 50%);
+      radial-gradient(circle at 20% 30%, rgba(85, 60, 200, 0.22) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(30, 90, 200, 0.18) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(85, 223, 255, 0.06) 0%, transparent 60%);
     filter: blur(60px);
     pointer-events: none;
   }
@@ -319,42 +739,48 @@
       radial-gradient(1px 1px at 90% 60%, rgba(200,220,255,0.5), transparent),
       radial-gradient(1px 1px at 33% 80%, rgba(255,255,255,0.6), transparent),
       radial-gradient(2px 2px at 15% 65%, rgba(180,200,255,0.8), transparent),
-      radial-gradient(1px 1px at 70% 25%, rgba(255,255,255,0.5), transparent);
+      radial-gradient(1px 1px at 70% 25%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 5% 45%, rgba(255,255,255,0.7), transparent),
+      radial-gradient(1.5px 1.5px at 42% 15%, rgba(200,220,255,0.9), transparent);
     background-size: 100% 100%;
-    animation: twinkle 4s ease-in-out infinite alternate;
+    animation: twinkle 5s ease-in-out infinite alternate;
   }
-  @keyframes twinkle {
-    0% { opacity: 0.6; }
-    100% { opacity: 1; }
-  }
-  .fb-content {
-    position: relative;
-    z-index: 2;
-    max-width: 720px;
-  }
+  @keyframes twinkle { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+  .fb-content { position: relative; z-index: 2; max-width: 720px; }
   .fb-logo {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
-    font-size: clamp(2rem, 6vw, 4rem);
+    font-size: clamp(2rem, 6vw, 3.8rem);
     letter-spacing: 0.15em;
-    background: linear-gradient(180deg, #f5f7ff 0%, #b8c2d8 50%, #6a7898 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #d7dce8 40%, #8a95b0 75%, #5a6580 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    margin-bottom: 2.5rem;
-    filter: drop-shadow(0 0 20px rgba(120, 170, 255, 0.4));
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 0 25px rgba(85, 223, 255, 0.4));
+  }
+  .fb-tagline {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    font-size: clamp(0.7rem, 1.3vw, 0.9rem);
+    letter-spacing: 0.5em;
+    color: rgba(199, 167, 108, 0.8);
+    margin-bottom: 3rem;
+    text-transform: uppercase;
   }
   .fb-heading {
-    font-size: clamp(0.9rem, 2.2vw, 1.4rem);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    font-size: clamp(0.9rem, 2.2vw, 1.3rem);
     letter-spacing: 0.35em;
-    color: rgba(200, 220, 255, 0.9);
+    color: rgba(215, 220, 232, 0.95);
     margin-bottom: 1rem;
-    font-weight: 400;
+    text-transform: uppercase;
   }
   .fb-sub {
     font-size: clamp(0.75rem, 1.4vw, 0.95rem);
     letter-spacing: 0.15em;
-    color: rgba(160, 180, 220, 0.65);
+    color: rgba(170, 195, 235, 0.7);
     margin-bottom: 3rem;
     font-weight: 400;
     line-height: 1.8;
@@ -369,7 +795,7 @@
     letter-spacing: 0.3em;
     color: #e8f0ff;
     background: linear-gradient(135deg, rgba(60, 90, 180, 0.3) 0%, rgba(40, 60, 140, 0.2) 100%);
-    border: 1px solid rgba(140, 180, 255, 0.5);
+    border: 1px solid rgba(85, 223, 255, 0.5);
     border-radius: 2px;
     cursor: pointer;
     text-decoration: none;
@@ -377,9 +803,7 @@
     transition: all 0.35s ease;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow:
-      0 0 20px rgba(100, 150, 255, 0.2),
-      inset 0 0 20px rgba(100, 150, 255, 0.05);
+    box-shadow: 0 0 25px rgba(85, 223, 255, 0.2), inset 0 0 20px rgba(85, 223, 255, 0.05);
   }
   .fb-btn::before {
     content: '';
@@ -388,40 +812,46 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
     transition: left 0.6s ease;
   }
   .fb-btn:hover {
-    border-color: rgba(180, 210, 255, 0.9);
+    border-color: rgba(85, 223, 255, 0.9);
     background: linear-gradient(135deg, rgba(80, 120, 220, 0.4) 0%, rgba(60, 90, 180, 0.3) 100%);
-    box-shadow:
-      0 0 40px rgba(120, 170, 255, 0.4),
-      inset 0 0 30px rgba(120, 170, 255, 0.1);
+    box-shadow: 0 0 50px rgba(85, 223, 255, 0.45), inset 0 0 30px rgba(85, 223, 255, 0.1);
     transform: translateY(-2px);
   }
   .fb-btn:hover::before { left: 100%; }
-
   .fb-footer {
     margin-top: 3.5rem;
     font-size: 0.7rem;
     letter-spacing: 0.3em;
     color: rgba(140, 160, 200, 0.4);
+    text-transform: uppercase;
   }
 
-  /* Reduced motion */
+  /* ===== REDUCED MOTION ===== */
   @media (prefers-reduced-motion: reduce) {
-    .ring, .portal-core, .nebula::before, .nebula::after, .fb-stars {
-      animation: none !important;
-    }
-    #logo, #tagline, .nebula, #fallback {
-      transition-duration: 0.01ms !important;
-    }
+    .ring, .portal-core, .fb-stars, .holo, .page { animation: none !important; }
+    #logo, #tagline, .nebula, #fallback, .holo, .page { transition-duration: 0.01ms !important; }
   }
 
-  @media (max-width: 480px) {
-    #logo { letter-spacing: 0.1em; }
-    #tagline { letter-spacing: 0.3em; bottom: 22%; }
-    .fb-btn { padding: 0.95rem 2rem; letter-spacing: 0.2em; }
+  @media (max-width: 600px) {
+    #logo { letter-spacing: 0.08em; }
+    #logo .files { letter-spacing: 0.2em; }
+    #tagline { letter-spacing: 0.3em; }
+    .hud-corner { padding: 10px 12px; font-size: 8px; }
+    .hud-bracket { width: 16px; height: 16px; }
+    .holo-molar { left: 5%; top: 15%; }
+    .holo-arch { right: 5%; top: 12%; }
+    .holo-cross { left: 8%; bottom: 15%; }
+    .holo-instrument { right: 8%; bottom: 15%; }
+    .page-1 { left: 3%; }
+    .page-2 { right: 3%; }
+    .page-3 { left: 10%; }
+    .page-4 { right: 10%; }
+    .page-5 { display: none; }
+    #audioPrompt { font-size: 10px; padding: 10px 16px; letter-spacing: 0.2em; }
   }
 </style>
 </head>
@@ -429,419 +859,1030 @@
 
 <canvas id="cosmos"></canvas>
 
-<div class="nebula" id="nebula1"></div>
-<div class="nebula nebula-2" id="nebula2"></div>
-
-<div id="logoWrap">
-  <div id="logo">BOSS FILES</div>
-  <div id="tagline">THE GATEWAY TO ANOTHER DIMENSION</div>
+<div class="nebula" id="nebula1">
+  <div class="n3"></div>
+  <div class="n4"></div>
 </div>
 
+<!-- DENTAL HOLOGRAMS -->
+<div id="holograms">
+  <!-- Molar -->
+  <div class="holo holo-molar" id="holoMolar">
+    <svg viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="molarGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#55DFFF" stop-opacity="0.9"/>
+          <stop offset="50%" stop-color="#426BFF" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#8558FF" stop-opacity="0.3"/>
+        </linearGradient>
+      </defs>
+      <path d="M 30 20 Q 25 15 30 12 Q 40 8 50 12 Q 60 8 70 12 Q 75 15 70 20 Q 75 30 72 45 Q 74 60 70 75 Q 68 95 65 115 Q 62 120 58 115 Q 55 95 52 80 Q 50 95 48 115 Q 45 120 42 115 Q 38 95 35 75 Q 30 60 28 45 Q 25 30 30 20 Z"
+            fill="url(#molarGrad)" stroke="#55DFFF" stroke-width="0.8" opacity="0.85"/>
+      <path d="M 35 25 Q 40 22 50 25 Q 60 22 65 25" fill="none" stroke="#55DFFF" stroke-width="0.5" opacity="0.6"/>
+      <circle cx="50" cy="50" r="1.5" fill="#55DFFF" opacity="0.8"/>
+      <circle cx="45" cy="65" r="1" fill="#55DFFF" opacity="0.6"/>
+      <circle cx="55" cy="65" r="1" fill="#55DFFF" opacity="0.6"/>
+    </svg>
+  </div>
+  <!-- Dental Arch -->
+  <div class="holo holo-arch" id="holoArch">
+    <svg viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="archGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#55DFFF" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#426BFF" stop-opacity="0.3"/>
+        </linearGradient>
+      </defs>
+      <path d="M 15 70 Q 15 25 70 20 Q 125 25 125 70" fill="none" stroke="url(#archGrad)" stroke-width="1.5" opacity="0.9"/>
+      <g opacity="0.75">
+        <rect x="22" y="60" width="6" height="10" fill="#55DFFF" opacity="0.6" rx="1"/>
+        <rect x="30" y="55" width="6" height="12" fill="#55DFFF" opacity="0.6" rx="1"/>
+        <rect x="38" y="48" width="7" height="14" fill="#55DFFF" opacity="0.7" rx="1"/>
+        <rect x="47" y="42" width="7" height="16" fill="#55DFFF" opacity="0.7" rx="1"/>
+        <rect x="56" y="38" width="7" height="17" fill="#55DFFF" opacity="0.75" rx="1"/>
+        <rect x="65" y="36" width="10" height="18" fill="#55DFFF" opacity="0.8" rx="1"/>
+        <rect x="77" y="38" width="7" height="17" fill="#55DFFF" opacity="0.75" rx="1"/>
+        <rect x="86" y="42" width="7" height="16" fill="#55DFFF" opacity="0.7" rx="1"/>
+        <rect x="95" y="48" width="7" height="14" fill="#55DFFF" opacity="0.7" rx="1"/>
+        <rect x="104" y="55" width="6" height="12" fill="#55DFFF" opacity="0.6" rx="1"/>
+        <rect x="112" y="60" width="6" height="10" fill="#55DFFF" opacity="0.6" rx="1"/>
+      </g>
+      <path d="M 15 70 Q 15 25 70 20 Q 125 25 125 70" fill="none" stroke="#55DFFF" stroke-width="0.3" opacity="0.4" stroke-dasharray="2,2"/>
+    </svg>
+  </div>
+  <!-- Cross-section -->
+  <div class="holo holo-cross" id="holoCross">
+    <svg viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="crossGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#C7A76C" stop-opacity="0.7"/>
+          <stop offset="100%" stop-color="#55DFFF" stop-opacity="0.4"/>
+        </linearGradient>
+      </defs>
+      <path d="M 20 15 Q 15 10 25 8 Q 40 5 55 8 Q 65 10 60 15 Q 65 25 62 40 Q 63 55 60 70 Q 58 85 55 105 Q 50 110 48 105 Q 45 85 42 70 Q 40 85 38 105 Q 35 110 32 105 Q 28 85 25 70 Q 20 55 18 40 Q 15 25 20 15 Z"
+            fill="none" stroke="url(#crossGrad)" stroke-width="1" opacity="0.8"/>
+      <path d="M 35 25 Q 40 22 45 25 Q 47 35 45 50 Q 44 65 42 80 Q 40 90 40 80 Q 38 65 37 50 Q 35 35 35 25 Z"
+            fill="#55DFFF" opacity="0.3"/>
+      <line x1="40" y1="30" x2="40" y2="85" stroke="#55DFFF" stroke-width="0.5" opacity="0.5" stroke-dasharray="1,2"/>
+      <circle cx="40" cy="50" r="1" fill="#55DFFF" opacity="0.8"/>
+    </svg>
+  </div>
+  <!-- Dental Instrument -->
+  <div class="holo holo-instrument" id="holoInstrument">
+    <svg viewBox="0 0 40 150" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="instGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#D7DCE8" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#55DFFF" stop-opacity="0.4"/>
+        </linearGradient>
+      </defs>
+      <rect x="17" y="10" width="6" height="90" fill="url(#instGrad)" opacity="0.7" rx="1"/>
+      <path d="M 17 100 L 15 115 Q 14 125 20 130 Q 26 125 25 115 L 23 100 Z" fill="#55DFFF" opacity="0.6"/>
+      <rect x="16" y="15" width="8" height="2" fill="#55DFFF" opacity="0.5"/>
+      <rect x="16" y="25" width="8" height="1" fill="#55DFFF" opacity="0.3"/>
+      <rect x="16" y="35" width="8" height="1" fill="#55DFFF" opacity="0.3"/>
+      <circle cx="20" cy="8" r="2" fill="#55DFFF" opacity="0.7"/>
+    </svg>
+  </div>
+</div>
+
+<!-- FLOATING PAGES -->
+<div id="pages">
+  <div class="page page-1" id="page1">
+    <div class="page-title">DENTAL ANATOMY</div>
+    <div class="page-lines">
+      <div class="page-line long"></div>
+      <div class="page-line mid"></div>
+      <div class="page-line long"></div>
+      <div class="page-line short"></div>
+      <div class="page-line mid"></div>
+      <div class="page-line long"></div>
+    </div>
+    <div class="page-diagram"></div>
+  </div>
+  <div class="page page-2" id="page2">
+    <div class="page-title">ENDODONTICS</div>
+    <div class="page-lines">
+      <div class="page-line mid"></div>
+      <div class="page-line long"></div>
+      <div class="page-line short"></div>
+      <div class="page-line mid"></div>
+      <div class="page-line long"></div>
+    </div>
+    <div class="page-diagram"></div>
+  </div>
+  <div class="page page-3" id="page3">
+    <div class="page-title">ORAL SURGERY</div>
+    <div class="page-diagram"></div>
+    <div class="page-lines" style="margin-top:8px;">
+      <div class="page-line long"></div>
+      <div class="page-line mid"></div>
+      <div class="page-line short"></div>
+      <div class="page-line long"></div>
+    </div>
+  </div>
+  <div class="page page-4" id="page4">
+    <div class="page-title">PROSTHODONTICS</div>
+    <div class="page-lines">
+      <div class="page-line long"></div>
+      <div class="page-line short"></div>
+      <div class="page-line mid"></div>
+      <div class="page-line long"></div>
+      <div class="page-line mid"></div>
+    </div>
+    <div class="page-diagram"></div>
+  </div>
+  <div class="page page-5" id="page5">
+    <div class="page-title">PERIODONTICS</div>
+    <div class="page-diagram"></div>
+    <div class="page-lines" style="margin-top:8px;">
+      <div class="page-line mid"></div>
+      <div class="page-line long"></div>
+      <div class="page-line short"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGO -->
+<div id="logoWrap">
+  <div id="logo">
+    <span class="boss">BOSS</span>
+    <span class="files">FILES</span>
+  </div>
+  <div id="tagline">BEYOND THE ORDINARY</div>
+</div>
+
+<!-- PORTAL -->
 <div id="portal">
   <div class="ring ring-1"></div>
   <div class="ring ring-2"></div>
   <div class="ring ring-3"></div>
   <div class="ring ring-4"></div>
+  <div class="ring ring-5"></div>
   <div class="portal-core"></div>
 </div>
 
+<!-- HUD -->
+<div id="hud">
+  <div class="hud-bracket tl"></div>
+  <div class="hud-bracket tr"></div>
+  <div class="hud-bracket bl"></div>
+  <div class="hud-bracket br"></div>
+  <div class="hud-corner hud-tl">
+    <div class="hud-line">SYS <span class="val">BOSS-FILES</span></div>
+    <div class="hud-line">MODE <span class="val">ARCHIVE</span></div>
+    <div class="hud-line">SEC <span class="dim">07</span></div>
+  </div>
+  <div class="hud-corner hud-tr">
+    <div class="hud-line">COORD <span class="val" id="hudCoord">00.00 / 00.00</span></div>
+    <div class="hud-line">VECTOR <span class="val">FORWARD</span></div>
+    <div class="hud-line">LINK <span class="val" style="color:#55DFFF">STABLE</span></div>
+  </div>
+  <div class="hud-corner hud-bl">
+    <div class="hud-line">ARCHIVE <span class="val">DENTAL</span></div>
+    <div class="hud-line">STATUS <span class="val" id="hudStatus">INIT</span></div>
+  </div>
+  <div class="hud-corner hud-br">
+    <div class="hud-line">VELOCITY <span class="val" id="hudVelocity">0.00c</span></div>
+    <div class="hud-line">DIM <span class="val">Ω-7</span></div>
+  </div>
+  <div class="hud-reticle">
+    <div class="hud-reticle-circle"></div>
+  </div>
+</div>
+
+<!-- STATUS -->
+<div id="status"></div>
+
+<!-- OVERLAYS -->
 <div id="hyperspace"></div>
 <div id="flash"></div>
 
+<!-- AUDIO -->
+<button id="muteBtn" aria-label="Toggle sound">
+  <div class="mute-icon">
+    <div class="speaker"></div>
+    <div class="cone"></div>
+    <div class="wave"></div>
+  </div>
+</button>
+
+<div id="audioPrompt">
+  <div class="audio-icon"></div>
+  <div class="audio-prompt-text">EXPERIENCE BOSS FILES · ENABLE AUDIO</div>
+</div>
+
+<!-- FALLBACK -->
 <div id="fallback">
   <div class="fb-stars"></div>
   <div class="fb-content">
     <div class="fb-logo">BOSS FILES</div>
+    <div class="fb-tagline">BEYOND THE ORDINARY</div>
     <div class="fb-heading">YOUR DESTINATION IS READY</div>
-    <div class="fb-sub">The portal is open. Your next destination awaits.</div>
+    <div class="fb-sub">The portal is open. Your next destination awaits.<br/>Dental Knowledge Archive · Synchronized.</div>
     <a href="#" id="enterBtn" class="fb-btn">ENTER BOSS FILES</a>
-    <div class="fb-footer">SECURE DIMENSIONAL LINK • EST. 2026</div>
+    <div class="fb-footer">SECURE DIMENSIONAL LINK · DENTAL KNOWLEDGE ARCHIVE</div>
   </div>
 </div>
 
 <script>
-  // ============================================================
-  // BOSS FILES — Gateway to Another Dimension
-  // ============================================================
+/* ============================================================
+   BOSS FILES — Beyond The Ordinary
+   Cinematic Dental Study Universe
+   ============================================================ */
 
-  const DRIVE_URL = "https://drive.google.com/drive/folders/11fkM7syDL5R6-LmIH0N5JLM2YOgJiLiz?usp=sharing";
+// ===== CONFIGURATION =====
+const DRIVE_URL = "https://drive.google.com/drive/folders/11fkM7syDL5R6-LmIH0N5JLM2YOgJiLiz?usp=sharing";
 
-  // Performance / motion detection
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const devicePixelRatio = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
+// ===== DEVICE DETECTION =====
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
 
-  // Canvas setup
-  const canvas = document.getElementById('cosmos');
-  const ctx = canvas.getContext('2d');
-  let W = 0, H = 0, CX = 0, CY = 0;
+// ===== CANVAS =====
+const canvas = document.getElementById('cosmos');
+const ctx = canvas.getContext('2d');
+let W = 0, H = 0, CX = 0, CY = 0;
 
-  function resize() {
-    W = window.innerWidth;
-    H = window.innerHeight;
-    CX = W / 2;
-    CY = H / 2;
-    canvas.width = W * devicePixelRatio;
-    canvas.height = H * devicePixelRatio;
-    canvas.style.width = W + 'px';
-    canvas.style.height = H + 'px';
-    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
-  }
-  resize();
-  window.addEventListener('resize', resize);
+function resize() {
+  W = window.innerWidth;
+  H = window.innerHeight;
+  CX = W / 2;
+  CY = H / 2;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+resize();
+window.addEventListener('resize', resize);
 
-  // ============================================================
-  // STARFIELD
-  // ============================================================
-  const STAR_COUNT = isMobile ? 220 : 420;
-  const stars = [];
+// ===== STARS =====
+const STAR_COUNT = isMobile ? 260 : 500;
+const stars = [];
 
-  function createStar() {
-    const depth = Math.random(); // 0 = far, 1 = near
-    return {
-      x: (Math.random() - 0.5) * W * 2,
-      y: (Math.random() - 0.5) * H * 2,
-      z: depth * 800 + 50,
-      baseSize: 0.3 + depth * 1.6,
-      brightness: 0.3 + Math.random() * 0.7,
-      twinkleSpeed: 0.5 + Math.random() * 2,
-      twinkleOffset: Math.random() * Math.PI * 2,
-      hue: Math.random() < 0.3 ? 220 : (Math.random() < 0.5 ? 200 : 240)
-    };
-  }
-
-  for (let i = 0; i < STAR_COUNT; i++) {
-    stars.push(createStar());
-  }
-
-  // ============================================================
-  // PORTAL PARTICLES
-  // ============================================================
-  const portalParticles = [];
-  const PORTAL_PARTICLE_COUNT = isMobile ? 40 : 80;
-
-  function createPortalParticle() {
-    const angle = Math.random() * Math.PI * 2;
-    const radius = 80 + Math.random() * 180;
-    return {
-      angle,
-      radius,
-      speed: 0.003 + Math.random() * 0.008,
-      size: 0.5 + Math.random() * 2,
-      opacity: 0.3 + Math.random() * 0.7,
-      hue: 200 + Math.random() * 60,
-      drift: (Math.random() - 0.5) * 0.3
-    };
-  }
-  for (let i = 0; i < PORTAL_PARTICLE_COUNT; i++) {
-    portalParticles.push(createPortalParticle());
-  }
-
-  // ============================================================
-  // ANIMATION STATE
-  // ============================================================
-  const state = {
-    phase: 'reveal',      // reveal -> logo -> portal -> hyperspace -> redirect
-    startTime: performance.now(),
-    globalAlpha: 0,
-    portalSize: 0,
-    portalIntensity: 0,
-    hyperspaceSpeed: 0,
-    hyperspaceProgress: 0,
-    cameraZ: 0,
-    redirectTriggered: false
+function createStar(nearBias = false) {
+  const depth = nearBias ? Math.random() * 0.5 + 0.5 : Math.random();
+  return {
+    x: (Math.random() - 0.5) * W * 2.5,
+    y: (Math.random() - 0.5) * H * 2.5,
+    z: depth * 900 + 50,
+    baseSize: 0.3 + depth * 1.8,
+    brightness: 0.3 + Math.random() * 0.7,
+    twinkleSpeed: 0.5 + Math.random() * 2,
+    twinkleOffset: Math.random() * Math.PI * 2,
+    hue: Math.random() < 0.3 ? 200 : (Math.random() < 0.5 ? 220 : (Math.random() < 0.7 ? 240 : 45))
   };
+}
+for (let i = 0; i < STAR_COUNT; i++) stars.push(createStar());
 
-  // Timeline (ms)
-  const T = {
-    REVEAL_START: 0,
-    LOGO_START: 900,
-    PORTAL_START: 2200,
-    HYPER_START: 4000,
-    FLASH_START: 5200,
-    REDIRECT: prefersReducedMotion ? 3500 : 5600
-  };
+// ===== PORTAL PARTICLES =====
+const portalParticles = [];
+const PORTAL_PARTICLE_COUNT = isMobile ? 50 : 100;
+for (let i = 0; i < PORTAL_PARTICLE_COUNT; i++) {
+  portalParticles.push({
+    angle: Math.random() * Math.PI * 2,
+    radius: 80 + Math.random() * 220,
+    speed: 0.004 + Math.random() * 0.01,
+    size: 0.5 + Math.random() * 2.2,
+    opacity: 0.3 + Math.random() * 0.7,
+    hue: 190 + Math.random() * 70,
+    drift: (Math.random() - 0.5) * 0.4
+  });
+}
 
-  // ============================================================
-  // RENDER LOOP
-  // ============================================================
-  let lastTime = performance.now();
+// ===== TIMELINE =====
+const T = {
+  LOGO_START: prefersReducedMotion ? 300 : 1100,
+  HOLO_START: prefersReducedMotion ? 600 : 2000,
+  PAGES_START: prefersReducedMotion ? 800 : 2600,
+  HUD_START: prefersReducedMotion ? 500 : 1800,
+  PORTAL_START: prefersReducedMotion ? 1200 : 3400,
+  STATUS_START: prefersReducedMotion ? 1800 : 4400,
+  HYPER_START: prefersReducedMotion ? 2600 : 6200,
+  FLASH_START: prefersReducedMotion ? 3200 : 7400,
+  REDIRECT: prefersReducedMotion ? 3600 : 7900
+};
 
-  function render(now) {
-    const dt = Math.min(now - lastTime, 50);
-    lastTime = now;
-    const elapsed = now - state.startTime;
+const STATUS_MESSAGES = [
+  { text: 'INITIALIZING THE ARCHIVE', at: 0 },
+  { text: 'ESTABLISHING DIMENSIONAL ROUTE', at: 900 },
+  { text: 'SYNCHRONIZING STUDY RESOURCES', at: 1800 },
+  { text: 'DENTAL KNOWLEDGE ARCHIVE READY', at: 2700 },
+  { text: 'PORTAL ACTIVATED', at: 3500 }
+];
 
-    ctx.clearRect(0, 0, W, H);
+// ===== STATE =====
+const state = {
+  startTime: performance.now(),
+  globalAlpha: 0,
+  hyperspaceSpeed: 0,
+  redirectTriggered: false,
+  flashFired: false,
+  statusIndex: -1,
+  portalSize: 0
+};
 
-    // Global fade-in for stars
-    if (elapsed < 1500) {
-      state.globalAlpha = Math.min(1, elapsed / 1500);
-    } else {
-      state.globalAlpha = 1;
-    }
+// ===== AUDIO ENGINE =====
+const audio = {
+  ctx: null,
+  master: null,
+  enabled: false,
+  muted: false,
+  layers: {},
+  promptShown: false,
 
-    // Hyperspace acceleration
-    if (elapsed > T.HYPER_START) {
-      const hyperElapsed = elapsed - T.HYPER_START;
-      state.hyperspaceSpeed = Math.min(1, hyperElapsed / 1200);
-      state.hyperspaceProgress = state.hyperspaceSpeed;
-    }
-
-    // Draw stars
-    drawStars(elapsed, dt);
-
-    // Draw portal particles
-    if (elapsed > T.PORTAL_START && elapsed < T.HYPER_START + 800) {
-      drawPortalParticles(elapsed);
-    }
-
-    // Phase transitions
-    if (elapsed >= T.LOGO_START && state.phase === 'reveal') {
-      state.phase = 'logo';
-      document.getElementById('logo').classList.add('visible');
-      document.getElementById('logo').classList.add('sweep');
-      document.getElementById('tagline').classList.add('visible');
-    }
-
-    if (elapsed >= T.PORTAL_START && state.phase === 'logo') {
-      state.phase = 'portal';
-      const portal = document.getElementById('portal');
-      portal.classList.add('active');
-      animatePortalOpen();
-    }
-
-    if (elapsed >= T.HYPER_START && state.phase === 'portal') {
-      state.phase = 'hyperspace';
-      triggerHyperspace();
-    }
-
-    if (elapsed >= T.FLASH_START && !state.flashFired) {
-      state.flashFired = true;
-      triggerFlash();
-    }
-
-    if (elapsed >= T.REDIRECT && !state.redirectTriggered) {
-      state.redirectTriggered = true;
-      performRedirect();
-    }
-
-    requestAnimationFrame(render);
-  }
-
-  function drawStars(elapsed, dt) {
-    const hyper = state.hyperspaceSpeed;
-    const cx = CX;
-    const cy = CY;
-
-    for (let i = 0; i < stars.length; i++) {
-      const s = stars[i];
-
-      // Twinkle
-      const twinkle = 0.6 + 0.4 * Math.sin(elapsed * 0.001 * s.twinkleSpeed + s.twinkleOffset);
-
-      // Project star
-      const perspective = 400 / (s.z + 400);
-      let sx = cx + s.x * perspective;
-      let sy = cy + s.y * perspective;
-
-      // Hyperspace: stretch toward edges
-      let size = s.baseSize * perspective * (1 + hyper * 3);
-      let alpha = s.brightness * twinkle * state.globalAlpha;
-
-      if (hyper > 0) {
-        // Move star outward from center
-        const dx = sx - cx;
-        const dy = sy - cy;
-        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-        const stretch = hyper * 180 * perspective;
-        const nx = dx / dist;
-        const ny = dy / dist;
-
-        // Draw streak
-        const streakLen = stretch * 2;
-        const grad = ctx.createLinearGradient(
-          sx - nx * streakLen, sy - ny * streakLen,
-          sx, sy
-        );
-        grad.addColorStop(0, `hsla(${s.hue}, 80%, 85%, 0)`);
-        grad.addColorStop(1, `hsla(${s.hue}, 80%, 90%, ${alpha})`);
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = Math.max(0.5, size * 0.8);
-        ctx.beginPath();
-        ctx.moveTo(sx - nx * streakLen, sy - ny * streakLen);
-        ctx.lineTo(sx, sy);
-        ctx.stroke();
-
-        // Move star outward
-        s.x += nx * hyper * 8;
-        s.y += ny * hyper * 8;
-
-        // Reset if out of bounds
-        if (sx < -50 || sx > W + 50 || sy < -50 || sy > H + 50) {
-          s.x = (Math.random() - 0.5) * W * 0.5;
-          s.y = (Math.random() - 0.5) * H * 0.5;
-          s.z = 800;
-        }
-      } else {
-        // Normal star
-        ctx.fillStyle = `hsla(${s.hue}, 70%, 90%, ${alpha})`;
-        ctx.beginPath();
-        ctx.arc(sx, sy, size, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Glow for bright stars
-        if (s.brightness > 0.8 && size > 1) {
-          ctx.fillStyle = `hsla(${s.hue}, 80%, 85%, ${alpha * 0.2})`;
-          ctx.beginPath();
-          ctx.arc(sx, sy, size * 3, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-    }
-  }
-
-  function drawPortalParticles(elapsed) {
-    const portalProgress = Math.min(1, (elapsed - T.PORTAL_START) / 1500);
-    const cx = CX;
-    const cy = CY;
-
-    for (let i = 0; i < portalParticles.length; i++) {
-      const p = portalParticles[i];
-      p.angle += p.speed;
-      p.radius += p.drift;
-
-      if (p.radius < 40 || p.radius > 280) {
-        p.radius = 80 + Math.random() * 180;
-      }
-
-      const px = cx + Math.cos(p.angle) * p.radius * portalProgress;
-      const py = cy + Math.sin(p.angle) * p.radius * portalProgress;
-
-      const alpha = p.opacity * portalProgress * state.globalAlpha;
-      ctx.fillStyle = `hsla(${p.hue}, 85%, 75%, ${alpha})`;
-      ctx.beginPath();
-      ctx.arc(px, py, p.size * portalProgress, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Glow
-      ctx.fillStyle = `hsla(${p.hue}, 90%, 80%, ${alpha * 0.3})`;
-      ctx.beginPath();
-      ctx.arc(px, py, p.size * portalProgress * 3, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
-
-  function animatePortalOpen() {
-    const portal = document.getElementById('portal');
-    const startSize = 0;
-    const targetSize = Math.min(W, H) * 0.9;
-    const duration = 1800;
-    const startTime = performance.now();
-
-    function step() {
-      const elapsed = performance.now() - startTime;
-      const progress = Math.min(1, elapsed / duration);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-
-      const currentSize = startSize + (targetSize - startSize) * eased;
-      portal.style.width = currentSize + 'px';
-      portal.style.height = currentSize + 'px';
-
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    step();
-  }
-
-  function triggerHyperspace() {
-    // Fade out portal
-    const portal = document.getElementById('portal');
-    portal.style.transition = 'opacity 0.6s ease-out, transform 1s ease-in';
-    portal.style.opacity = '0';
-    portal.style.transform = 'translate(-50%, -50%) scale(3)';
-
-    // Fade out logo
-    const logo = document.getElementById('logo');
-    logo.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-    logo.style.opacity = '0';
-    logo.style.transform = 'scale(1.5)';
-
-    const tagline = document.getElementById('tagline');
-    tagline.style.transition = 'opacity 0.5s ease-out';
-    tagline.style.opacity = '0';
-
-    // Hyperspace overlay
-    const hyper = document.getElementById('hyperspace');
-    hyper.classList.add('active');
-    hyper.style.background = `radial-gradient(circle at 50% 50%,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(200, 220, 255, 0.1) 30%,
-      rgba(100, 140, 255, 0.2) 60%,
-      rgba(0, 0, 0, 0) 100%)`;
-  }
-
-  function triggerFlash() {
-    const flash = document.getElementById('flash');
-    flash.style.transition = 'opacity 0.15s ease-out';
-    flash.style.opacity = '1';
-    setTimeout(() => {
-      flash.style.transition = 'opacity 0.6s ease-out';
-      flash.style.opacity = '0';
-    }, 150);
-  }
-
-  function performRedirect() {
+  async init() {
+    if (this.ctx) return;
     try {
-      window.location.replace(DRIVE_URL);
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      this.ctx = new AC();
+      this.master = this.ctx.createGain();
+      this.master.gain.value = 0.7;
+      this.master.connect(this.ctx.destination);
+      this.enabled = true;
+      if (this.ctx.state === 'suspended') await this.ctx.resume();
     } catch (e) {
-      showFallback();
+      console.warn('Audio init failed:', e);
     }
+  },
 
-    // Fallback if redirect didn't happen within 1.5s
+  createNoise(duration = 2) {
+    const bufferSize = this.ctx.sampleRate * duration;
+    const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+    const src = this.ctx.createBufferSource();
+    src.buffer = buffer;
+    return src;
+  },
+
+  // Layer A: Ambient drone
+  startDrone() {
+    if (!this.enabled) return;
+    const now = this.ctx.currentTime;
+    const osc1 = this.ctx.createOscillator();
+    const osc2 = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    const filter = this.ctx.createBiquadFilter();
+
+    osc1.type = 'sine';
+    osc1.frequency.value = 55;
+    osc2.type = 'sine';
+    osc2.frequency.value = 55.3;
+
+    filter.type = 'lowpass';
+    filter.frequency.value = 200;
+    filter.Q.value = 1;
+
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.08, now + 3);
+
+    osc1.connect(filter);
+    osc2.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.master);
+
+    osc1.start(now);
+    osc2.start(now);
+
+    this.layers.drone = { osc1, osc2, gain, filter };
+  },
+
+  // Layer B: Startup tones
+  playStartupTone() {
+    if (!this.enabled) return;
+    const now = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    const filter = this.ctx.createBiquadFilter();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(220, now);
+    osc.frequency.exponentialRampToValueAtTime(440, now + 0.8);
+
+    filter.type = 'lowpass';
+    filter.frequency.value = 2000;
+
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.06, now + 0.1);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
+
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.master);
+    osc.start(now);
+    osc.stop(now + 1.3);
+
+    // Shimmer
     setTimeout(() => {
-      if (!document.hidden) {
-        showFallback();
-      }
-    }, 1500);
-  }
+      if (!this.enabled) return;
+      const t = this.ctx.currentTime;
+      const shim = this.ctx.createOscillator();
+      const sg = this.ctx.createGain();
+      shim.type = 'triangle';
+      shim.frequency.value = 1320;
+      sg.gain.setValueAtTime(0, t);
+      sg.gain.linearRampToValueAtTime(0.03, t + 0.05);
+      sg.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
+      shim.connect(sg);
+      sg.connect(this.master);
+      shim.start(t);
+      shim.stop(t + 0.7);
+    }, 400);
+  },
 
-  function showFallback() {
-    const fallback = document.getElementById('fallback');
-    fallback.style.display = 'flex';
-    requestAnimationFrame(() => {
-      fallback.classList.add('visible');
+  // Layer C: Wind (filtered noise)
+  startWind() {
+    if (!this.enabled) return;
+    const now = this.ctx.currentTime;
+    const noise = this.createNoise(10);
+    noise.loop = true;
+    const filter = this.ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.value = 800;
+    filter.Q.value = 0.8;
+    const gain = this.ctx.createGain();
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.04, now + 2);
+
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.master);
+    noise.start(now);
+
+    this.layers.wind = { noise, filter, gain };
+  },
+
+  setWindIntensity(v) {
+    if (!this.enabled || !this.layers.wind) return;
+    const now = this.ctx.currentTime;
+    const target = 0.04 + v * 0.2;
+    this.layers.wind.gain.gain.linearRampToValueAtTime(target, now + 0.1);
+    this.layers.wind.filter.frequency.linearRampToValueAtTime(800 + v * 2000, now + 0.1);
+  },
+
+  // Layer D: Portal charge
+  startPortalCharge() {
+    if (!this.enabled) return;
+    const now = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const osc2 = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    const filter = this.ctx.createBiquadFilter();
+
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(80, now);
+    osc.frequency.exponentialRampToValueAtTime(320, now + 2.5);
+
+    osc2.type = 'sine';
+    osc2.frequency.setValueAtTime(120, now);
+    osc2.frequency.exponentialRampToValueAtTime(480, now + 2.5);
+
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(400, now);
+    filter.frequency.exponentialRampToValueAtTime(1800, now + 2.5);
+    filter.Q.value = 3;
+
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.09, now + 2.5);
+
+    osc.connect(filter);
+    osc2.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.master);
+
+    osc.start(now);
+    osc2.start(now);
+    osc.stop(now + 2.6);
+    osc2.stop(now + 2.6);
+
+    this.layers.portalCharge = { osc, osc2, gain };
+  },
+
+  // Layer E: Hyperspace
+  startHyperspace() {
+    if (!this.enabled) return;
+    const now = this.ctx.currentTime;
+
+    // Engine rise
+    const eng = this.ctx.createOscillator();
+    const engGain = this.ctx.createGain();
+    const engFilter = this.ctx.createBiquadFilter();
+    eng.type = 'sawtooth';
+    eng.frequency.setValueAtTime(100, now);
+    eng.frequency.exponentialRampToValueAtTime(800, now + 1.5);
+    engFilter.type = 'lowpass';
+    engFilter.frequency.setValueAtTime(500, now);
+    engFilter.frequency.exponentialRampToValueAtTime(3000, now + 1.5);
+    engGain.gain.setValueAtTime(0, now);
+    engGain.gain.linearRampToValueAtTime(0.12, now + 1.5);
+    eng.connect(engFilter);
+    engFilter.connect(engGain);
+    engGain.connect(this.master);
+    eng.start(now);
+    eng.stop(now + 1.6);
+
+    // Whoosh noise
+    const noise = this.createNoise(3);
+    const nGain = this.ctx.createGain();
+    const nFilter = this.ctx.createBiquadFilter();
+    nFilter.type = 'bandpass';
+    nFilter.frequency.setValueAtTime(1000, now);
+    nFilter.frequency.exponentialRampToValueAtTime(4000, now + 1.5);
+    nFilter.Q.value = 1.5;
+    nGain.gain.setValueAtTime(0, now);
+    nGain.gain.linearRampToValueAtTime(0.18, now + 1.5);
+    noise.connect(nFilter);
+    nFilter.connect(nGain);
+    nGain.connect(this.master);
+    noise.start(now);
+    noise.stop(now + 1.6);
+
+    // Rising tone
+    const rise = this.ctx.createOscillator();
+    const rGain = this.ctx.createGain();
+    rise.type = 'sine';
+    rise.frequency.setValueAtTime(200, now);
+    rise.frequency.exponentialRampToValueAtTime(1600, now + 1.5);
+    rGain.gain.setValueAtTime(0, now);
+    rGain.gain.linearRampToValueAtTime(0.08, now + 1.5);
+    rise.connect(rGain);
+    rGain.connect(this.master);
+    rise.start(now);
+    rise.stop(now + 1.6);
+
+    this.layers.hyper = { eng, noise, rise, engGain, nGain, rGain };
+
+    // Impact at peak
+    setTimeout(() => this.playImpact(), 1450);
+  },
+
+  playImpact() {
+    if (!this.enabled) return;
+    const now = this.ctx.currentTime;
+
+    // Low boom
+    const boom = this.ctx.createOscillator();
+    const bGain = this.ctx.createGain();
+    boom.type = 'sine';
+    boom.frequency.setValueAtTime(120, now);
+    boom.frequency.exponentialRampToValueAtTime(40, now + 0.5);
+    bGain.gain.setValueAtTime(0.25, now);
+    bGain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+    boom.connect(bGain);
+    bGain.connect(this.master);
+    boom.start(now);
+    boom.stop(now + 0.9);
+
+    // Noise burst
+    const burst = this.createNoise(0.5);
+    const brGain = this.ctx.createGain();
+    const brFilter = this.ctx.createBiquadFilter();
+    brFilter.type = 'lowpass';
+    brFilter.frequency.value = 3000;
+    brGain.gain.setValueAtTime(0.2, now);
+    brGain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+    burst.connect(brFilter);
+    brFilter.connect(brGain);
+    brGain.connect(this.master);
+    burst.start(now);
+
+    // Arrival tone
+    setTimeout(() => {
+      if (!this.enabled) return;
+      const t = this.ctx.currentTime;
+      const arr = this.ctx.createOscillator();
+      const aGain = this.ctx.createGain();
+      arr.type = 'sine';
+      arr.frequency.setValueAtTime(660, t);
+      arr.frequency.linearRampToValueAtTime(440, t + 1.5);
+      aGain.gain.setValueAtTime(0, t);
+      aGain.gain.linearRampToValueAtTime(0.06, t + 0.1);
+      aGain.gain.exponentialRampToValueAtTime(0.001, t + 1.8);
+      arr.connect(aGain);
+      aGain.connect(this.master);
+      arr.start(t);
+      arr.stop(t + 2);
+    }, 300);
+  },
+
+  // Paper flutter
+  playPaperFlutter() {
+    if (!this.enabled) return;
+    const now = this.ctx.currentTime;
+    const noise = this.createNoise(0.3);
+    const gain = this.ctx.createGain();
+    const filter = this.ctx.createBiquadFilter();
+    filter.type = 'highpass';
+    filter.frequency.value = 2000;
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.04, now + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.master);
+    noise.start(now);
+  },
+
+  fadeOut(duration = 1) {
+    if (!this.enabled || !this.master) return;
+    const now = this.ctx.currentTime;
+    this.master.gain.linearRampToValueAtTime(0, now + duration);
+  },
+
+  toggleMute() {
+    this.muted = !this.muted;
+    if (!this.master) return;
+    const now = this.ctx.currentTime;
+    this.master.gain.linearRampToValueAtTime(this.muted ? 0 : 0.7, now + 0.2);
+  }
+};
+
+// ===== AUDIO ACTIVATION =====
+const audioPrompt = document.getElementById('audioPrompt');
+const muteBtn = document.getElementById('muteBtn');
+
+function tryAutoplayAudio() {
+  audio.init().then(() => {
+    if (audio.enabled && audio.ctx.state === 'running') {
+      onAudioReady();
+    } else {
+      showAudioPrompt();
+    }
+  }).catch(() => showAudioPrompt());
+}
+
+function showAudioPrompt() {
+  if (state.promptShown) return;
+  state.promptShown = true;
+  audioPrompt.classList.add('visible');
+}
+
+function onAudioReady() {
+  audioPrompt.classList.remove('visible');
+  muteBtn.classList.add('visible');
+  audio.startDrone();
+  scheduleAudioTimeline();
+}
+
+audioPrompt.addEventListener('click', async () => {
+  await audio.init();
+  if (audio.enabled) onAudioReady();
+});
+
+// Also try on any user interaction
+const tryOnInteraction = () => {
+  if (!audio.enabled) {
+    audio.init().then(() => {
+      if (audio.enabled && audio.ctx.state === 'running') onAudioReady();
     });
   }
+  document.removeEventListener('click', tryOnInteraction);
+  document.removeEventListener('touchstart', tryOnInteraction);
+  document.removeEventListener('keydown', tryOnInteraction);
+};
+document.addEventListener('click', tryOnInteraction, { once: false });
+document.addEventListener('touchstart', tryOnInteraction, { once: false });
+document.addEventListener('keydown', tryOnInteraction, { once: false });
 
-  // Enter button
-  document.getElementById('enterBtn').addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = DRIVE_URL;
-  });
+muteBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  audio.toggleMute();
+  muteBtn.classList.toggle('muted', audio.muted);
+});
 
-  // Handle visibility changes
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      lastTime = performance.now();
-    }
-  });
+function scheduleAudioTimeline() {
+  setTimeout(() => audio.playStartupTone(), T.LOGO_START);
+  setTimeout(() => audio.startWind(), T.HOLO_START);
+  setTimeout(() => audio.playPaperFlutter(), T.PAGES_START + 200);
+  setTimeout(() => audio.playPaperFlutter(), T.PAGES_START + 800);
+  setTimeout(() => audio.playPaperFlutter(), T.PAGES_START + 1400);
+  setTimeout(() => audio.startPortalCharge(), T.PORTAL_START);
+  setTimeout(() => {
+    audio.startHyperspace();
+    audio.setWindIntensity(1);
+  }, T.HYPER_START);
+  setTimeout(() => audio.fadeOut(1.5), T.FLASH_START);
+}
 
-  // Start
-  if (prefersReducedMotion) {
-    // Simplified: show logo quickly, then redirect
-    setTimeout(() => {
-      document.getElementById('logo').classList.add('visible');
-      document.getElementById('tagline').classList.add('visible');
-      document.getElementById('nebula1').classList.add('visible');
-    }, 100);
-  } else {
-    document.getElementById('nebula1').classList.add('visible');
-    setTimeout(() => {
-      document.getElementById('nebula2').classList.add('visible');
-    }, 400);
+// Try autoplay immediately
+tryAutoplayAudio();
+
+// ===== RENDER LOOP =====
+let lastTime = performance.now();
+
+function render(now) {
+  const dt = Math.min(now - lastTime, 50);
+  lastTime = now;
+  const elapsed = now - state.startTime;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Global fade-in
+  state.globalAlpha = Math.min(1, elapsed / 1800);
+
+  // Hyperspace
+  if (elapsed > T.HYPER_START) {
+    const hyperElapsed = elapsed - T.HYPER_START;
+    state.hyperspaceSpeed = Math.min(1, hyperElapsed / 1200);
+    if (audio.enabled) audio.setWindIntensity(state.hyperspaceSpeed);
   }
 
+  drawStars(elapsed);
+
+  if (elapsed > T.PORTAL_START && elapsed < T.HYPER_START + 800) {
+    drawPortalParticles(elapsed);
+  }
+
+  // Phase transitions
+  if (elapsed >= T.LOGO_START && !state.logoShown) {
+    state.logoShown = true;
+    document.getElementById('logo').classList.add('visible');
+    document.getElementById('logo').classList.add('sweep');
+    document.getElementById('tagline').classList.add('visible');
+  }
+
+  if (elapsed >= T.HOLO_START && !state.holoShown) {
+    state.holoShown = true;
+    document.getElementById('holograms').classList.add('visible');
+    setTimeout(() => document.getElementById('holoMolar').classList.add('visible'), 100);
+    setTimeout(() => document.getElementById('holoArch').classList.add('visible'), 400);
+    setTimeout(() => document.getElementById('holoCross').classList.add('visible'), 700);
+    setTimeout(() => document.getElementById('holoInstrument').classList.add('visible'), 1000);
+  }
+
+  if (elapsed >= T.PAGES_START && !state.pagesShown) {
+    state.pagesShown = true;
+    document.getElementById('pages').classList.add('visible');
+    for (let i = 1; i <= 5; i++) {
+      setTimeout(() => {
+        const p = document.getElementById('page' + i);
+        if (p) p.classList.add('visible');
+      }, (i - 1) * 250);
+    }
+  }
+
+  if (elapsed >= T.HUD_START && !state.hudShown) {
+    state.hudShown = true;
+    document.getElementById('hud').classList.add('visible');
+  }
+
+  if (elapsed >= T.PORTAL_START && !state.portalShown) {
+    state.portalShown = true;
+    const portal = document.getElementById('portal');
+    portal.classList.add('active');
+    animatePortalOpen();
+  }
+
+  if (elapsed >= T.STATUS_START && !state.statusStarted) {
+    state.statusStarted = true;
+    runStatusSequence(elapsed - T.STATUS_START);
+  }
+
+  if (elapsed >= T.HYPER_START && !state.hyperTriggered) {
+    state.hyperTriggered = true;
+    triggerHyperspace();
+  }
+
+  if (elapsed >= T.FLASH_START && !state.flashFired) {
+    state.flashFired = true;
+    triggerFlash();
+  }
+
+  if (elapsed >= T.REDIRECT && !state.redirectTriggered) {
+    state.redirectTriggered = true;
+    performRedirect();
+  }
+
+  // Update HUD values
+  if (state.hudShown) updateHUD(elapsed);
+
   requestAnimationFrame(render);
+}
+
+function drawStars(elapsed) {
+  const hyper = state.hyperspaceSpeed;
+  const cx = CX, cy = CY;
+
+  for (let i = 0; i < stars.length; i++) {
+    const s = stars[i];
+    const twinkle = 0.6 + 0.4 * Math.sin(elapsed * 0.001 * s.twinkleSpeed + s.twinkleOffset);
+    const perspective = 400 / (s.z + 400);
+    let sx = cx + s.x * perspective;
+    let sy = cy + s.y * perspective;
+    let size = s.baseSize * perspective * (1 + hyper * 3);
+    let alpha = s.brightness * twinkle * state.globalAlpha;
+
+    if (hyper > 0) {
+      const dx = sx - cx;
+      const dy = sy - cy;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      const stretch = hyper * 220 * perspective;
+      const nx = dx / dist;
+      const ny = dy / dist;
+
+      const grad = ctx.createLinearGradient(
+        sx - nx * stretch, sy - ny * stretch, sx, sy
+      );
+      grad.addColorStop(0, `hsla(${s.hue}, 80%, 85%, 0)`);
+      grad.addColorStop(1, `hsla(${s.hue}, 80%, 92%, ${alpha})`);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = Math.max(0.5, size * 0.9);
+      ctx.beginPath();
+      ctx.moveTo(sx - nx * stretch, sy - ny * stretch);
+      ctx.lineTo(sx, sy);
+      ctx.stroke();
+
+      s.x += nx * hyper * 10;
+      s.y += ny * hyper * 10;
+
+      if (sx < -80 || sx > W + 80 || sy < -80 || sy > H + 80) {
+        s.x = (Math.random() - 0.5) * W * 0.6;
+        s.y = (Math.random() - 0.5) * H * 0.6;
+        s.z = 900;
+      }
+    } else {
+      ctx.fillStyle = `hsla(${s.hue}, 70%, 90%, ${alpha})`;
+      ctx.beginPath();
+      ctx.arc(sx, sy, size, 0, Math.PI * 2);
+      ctx.fill();
+
+      if (s.brightness > 0.8 && size > 1) {
+        ctx.fillStyle = `hsla(${s.hue}, 80%, 85%, ${alpha * 0.2})`;
+        ctx.beginPath();
+        ctx.arc(sx, sy, size * 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+}
+
+function drawPortalParticles(elapsed) {
+  const portalProgress = Math.min(1, (elapsed - T.PORTAL_START) / 1800);
+  const cx = CX, cy = CY;
+
+  for (let i = 0; i < portalParticles.length; i++) {
+    const p = portalParticles[i];
+    p.angle += p.speed;
+    p.radius += p.drift;
+    if (p.radius < 40 || p.radius > 320) p.radius = 80 + Math.random() * 220;
+
+    const px = cx + Math.cos(p.angle) * p.radius * portalProgress;
+    const py = cy + Math.sin(p.angle) * p.radius * portalProgress;
+    const alpha = p.opacity * portalProgress * state.globalAlpha;
+
+    ctx.fillStyle = `hsla(${p.hue}, 85%, 75%, ${alpha})`;
+    ctx.beginPath();
+    ctx.arc(px, py, p.size * portalProgress, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = `hsla(${p.hue}, 90%, 80%, ${alpha * 0.3})`;
+    ctx.beginPath();
+    ctx.arc(px, py, p.size * portalProgress * 3, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function animatePortalOpen() {
+  const portal = document.getElementById('portal');
+  const targetSize = Math.min(W, H) * 0.95;
+  const duration = 2200;
+  const startTime = performance.now();
+
+  function step() {
+    const elapsed = performance.now() - startTime;
+    const progress = Math.min(1, elapsed / duration);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const currentSize = targetSize * eased;
+    portal.style.width = currentSize + 'px';
+    portal.style.height = currentSize + 'px';
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  step();
+}
+
+function runStatusSequence(startOffset) {
+  const statusEl = document.getElementById('status');
+  const hudStatus = document.getElementById('hudStatus');
+  let idx = 0;
+
+  function showNext() {
+    if (idx >= STATUS_MESSAGES.length) return;
+    const msg = STATUS_MESSAGES[idx];
+    statusEl.textContent = msg.text;
+    statusEl.classList.add('visible');
+    if (hudStatus) hudStatus.textContent = msg.text.substring(0, 12);
+    idx++;
+    if (idx < STATUS_MESSAGES.length) {
+      const nextDelay = STATUS_MESSAGES[idx].at - msg.at;
+      setTimeout(showNext, nextDelay);
+    }
+  }
+  showNext();
+}
+
+function triggerHyperspace() {
+  const portal = document.getElementById('portal');
+  portal.style.transition = 'opacity 0.6s ease-out, transform 1s ease-in';
+  portal.style.opacity = '0';
+  portal.style.transform = 'translate(-50%, -50%) scale(3.5)';
+
+  const logo = document.getElementById('logo');
+  logo.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+  logo.style.opacity = '0';
+  logo.style.transform = 'scale(1.8)';
+
+  const tagline = document.getElementById('tagline');
+  tagline.style.transition = 'opacity 0.5s ease-out';
+  tagline.style.opacity = '0';
+
+  const holos = document.getElementById('holograms');
+  holos.style.transition = 'opacity 0.6s ease-out, transform 0.8s ease-out';
+  holos.style.opacity = '0';
+  holos.style.transform = 'scale(1.5)';
+
+  const pages = document.getElementById('pages');
+  pages.style.transition = 'opacity 0.6s ease-out, transform 0.8s ease-out';
+  pages.style.opacity = '0';
+  pages.style.transform = 'scale(1.3)';
+
+  const hud = document.getElementById('hud');
+  hud.style.transition = 'opacity 0.5s ease-out';
+  hud.style.opacity = '0.4';
+
+  const statusEl = document.getElementById('status');
+  statusEl.style.transition = 'opacity 0.4s ease-out';
+  statusEl.style.opacity = '0';
+
+  const hyper = document.getElementById('hyperspace');
+  hyper.classList.add('active');
+  hyper.style.background = `radial-gradient(circle at 50% 50%,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(200, 230, 255, 0.15) 30%,
+    rgba(85, 223, 255, 0.25) 60%,
+    rgba(0, 0, 0, 0) 100%)`;
+}
+
+function triggerFlash() {
+  const flash = document.getElementById('flash');
+  flash.style.transition = 'opacity 0.15s ease-out';
+  flash.style.opacity = '1';
+  setTimeout(() => {
+    flash.style.transition = 'opacity 0.7s ease-out';
+    flash.style.opacity = '0';
+  }, 180);
+}
+
+function updateHUD(elapsed) {
+  const velocity = state.hyperspaceSpeed;
+  const velEl = document.getElementById('hudVelocity');
+  const coordEl = document.getElementById('hudCoord');
+  if (velEl) velEl.textContent = (velocity * 0.97).toFixed(2) + 'c';
+  if (coordEl) {
+    const t = elapsed * 0.001;
+    const x = (Math.sin(t * 0.3) * 45).toFixed(2);
+    const y = (Math.cos(t * 0.2) * 30).toFixed(2);
+    coordEl.textContent = `${x} / ${y}`;
+  }
+}
+
+function performRedirect() {
+  try {
+    window.location.replace(DRIVE_URL);
+  } catch (e) {
+    showFallback();
+  }
+  setTimeout(() => {
+    if (!document.hidden) showFallback();
+  }, 1800);
+}
+
+function showFallback() {
+  if (state.fallbackShown) return;
+  state.fallbackShown = true;
+  const fb = document.getElementById('fallback');
+  fb.style.display = 'flex';
+  requestAnimationFrame(() => fb.classList.add('visible'));
+}
+
+document.getElementById('enterBtn').addEventListener('click', (e) => {
+  e.preventDefault();
+  window.location.href = DRIVE_URL;
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) lastTime = performance.now();
+});
+
+// Nebula reveal
+requestAnimationFrame(() => {
+  document.getElementById('nebula1').classList.add('visible');
+});
+
+requestAnimationFrame(render);
 </script>
 
 </body>
